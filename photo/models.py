@@ -11,6 +11,8 @@ class Photographer(Models.model):
 	about = models.TextField(_(u'about'))
 	date_registration =  models.DateTimeField(_(u'date_registration'))
 	date_pay =  models.DateTimeField(_(u'date_pay'))
+    active = models.BooleanField( default = False)
+
 	#type_account =	
 	
 	def __unicode__(self):
@@ -21,25 +23,17 @@ class Photographer(Models.model):
 class PhotoExample(object):
 	"""Example foto """
 	
-	def __init__(self, arg):
-		super (PhotoExample, self).__init__()
-		self.arg = arg
-	
+
 
 class Action(object):
 	"""Photographer can create action with date"""
 
-	def __init__(self, arg):
-		super(Action, self).__init__()
-		self.arg = arg
-		
+
 
 class Sale(object):
 	"""Photographer can create sale on his work"""
 
-	def __init__(self, arg):
-		super(Sale, self).__init__()
-		self.arg = arg
+
 		
 class Location(object):
 	"""Location Photographer"""
@@ -48,7 +42,3 @@ class Location(object):
 	region = models.CharField(_(u'region '),max_length=100)
 	city = models.CharField(_(u'city '),max_length=100)
 
-	def __init__(self, arg):
-		super(Location, self).__init__()
-		self.arg = arg
-		
