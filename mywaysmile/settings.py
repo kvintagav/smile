@@ -27,6 +27,19 @@ TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
+TEMPLATE_CONTEXT_PROCESSORS =(
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.contrib.messages.context_processors.messages',
+    'django.core.context_processors.request',
+    
+
+)
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -36,6 +49,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'top',
+    'photo',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -63,10 +78,16 @@ DATABASES = {
     }
 }
 
+
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'templates'),
+    os.path.join(BASE_DIR, 'top/templates'),
+    os.path.join(BASE_DIR, 'photo/templates'),
+)
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-RU'
 
 TIME_ZONE = 'UTC'
 
@@ -81,3 +102,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR,'static'),
+)
