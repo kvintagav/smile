@@ -1,3 +1,4 @@
+from django.utils.translation import ugettext as _
 from django.shortcuts import render , get_object_or_404
 from django.http import Http404, HttpResponse
 from django.template.loader import get_template
@@ -7,6 +8,8 @@ from photo.models import Photographer
 from django.utils import timezone
 
 
+
 def registration(request):
-	return HttpResponse("hello registration")
+	output = _("Welcome to my site")
+	return HttpResponse(output)
 
