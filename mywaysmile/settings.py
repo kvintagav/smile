@@ -26,7 +26,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+AUTH_USER_MODEL = 'photo.Photographer'
 
 TEMPLATE_CONTEXT_PROCESSORS =(
     'django.contrib.auth.context_processors.auth',

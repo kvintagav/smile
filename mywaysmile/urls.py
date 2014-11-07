@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from photo.views import registration
 
 urlpatterns = patterns('',
     # Examples:
@@ -7,6 +8,8 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    #url(r'^registration/',include('photo.urls',namespace="photo")),
+    url(r'^registration/',registration,name="registration"),
  	url(r'^$', include('top.urls',namespace="top")),
     	   
 )

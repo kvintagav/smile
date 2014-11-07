@@ -6,6 +6,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'ntmusic.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-    url(r'^$', views.registration, name='Registration'),
+    url(r'^registration/$', views.registration, name='registration'),
+   # url(r'^$', views.registration, name='registration'),
 
 )
