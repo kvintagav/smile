@@ -1,11 +1,16 @@
 from django import forms
 from photo.models import Photographer
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
+from django.utils.translation import ugettext_lazy as _
 
 class UserCreationForm(forms.ModelForm):
-	password1 = forms.CharField(label='Password',widget=forms.PasswordInput)
-	password2 = forms.CharField(label='Password confimation',widget=forms.PasswordInput)
+	password1 = forms.CharField(label=_(u'Password'),widget=forms.PasswordInput)
+	password2 = forms.CharField(label=_(u'Password confimation'),widget=forms.PasswordInput)
 
+	class Meta:
+		model = Photographer
+		fields = ('email', 'username')
+        
 	def clean_password2(self):
 		password1 = self.cleaned_data.get("password1")
 		password2 = self.cleaned_data.get("password2")
@@ -21,10 +26,14 @@ class UserCreationForm(forms.ModelForm):
 		return Photographer
 
 
+
 class UserChangeForm(forms.ModelForm):
     password = ReadOnlyPasswordHashField()
 
-
-
     def clean_password(self):
         return self.initial["password"]
+
+#class SearchForm(forms.ModelForm):
+
+
+
