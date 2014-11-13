@@ -1,2 +1,14 @@
 
 
+.starter_template{
+	padding: 40px 15px;
+	text-align: center;
+
+}
+.form_login{
+    margin: 10px;
+    width: 200px;
+    display: inline-block;
+
+}
+
