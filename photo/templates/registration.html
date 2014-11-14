@@ -1,18 +1,96 @@
 {%  extends 'main.html' %}
-
-
+{% load staticfiles %}
 
 {% block component %}
 
 <div >
-	<h1> Регистрация нового пользователя</h1>
+	<h1> Регистрация </h1>
+</div>
+
+<div >
+	<h4> Если вы фотограф и  хотите найти клиентов, пройдите регистрацию</h4>
 </div>
 <div >
 <form class="form-inline" role="form " action="{% url 'registration' %}" method="post">
 	{%csrf_token%}
-	{{form}}
-	
-	<input type="submit" value="Зрегистрироваться" >
+	<!--{{form}}-->
+	{{ form.non_field_errors }}
+	{% for field in form %}
+		<div class="f_row">
+			{{ field.errors }}
+			<div class="f_input">
+				{{ field }}
+				{% if field.help_text %}<div >{{ field.help_text }}</div>{% endif %}
+			</div>
+		</div>
+	{% endfor %}
+<!--
+	<div class="form_register">
+    {{ form.subject.errors }}
+    
+     <input id="id_username" maxlength="30" name="username" type="text" class="form-control " placeholder="Никнейм"/>
+
+	</div>
+
+	<div class="form_register">
+    {{ form.subject.errors }}
+     <input id="id_email" maxlength="30" name="email" type="text" class="form-control" placeholder="E-mail"/>
+
+	</div>
+
+
+	<div class="form_register">
+    {{ form.subject.errors }}
+     <input id="id_password1" maxlength="30" name="password1" type="text" class="form-control" placeholder="пароль"/>
+
+	</div>
+
+	<div class="form_register">
+    {{ form.subject.errors }}
+     <input id="id_password2" maxlength="30" name="id_password2" type="text" class="form-control" placeholder="пароль еще раз"/>
+
+	</div>
+	-->
+	<!--
+	<div>
+	<label for="id_username">Имя пользователя</label>
+	</div>
+	{{ form.error_messages }}
+	<div class="form_register">
+    {{ form.subject.errors }}
+    {{form.username}}
+	</div>
+
+	<div>
+	<label for="id_username">E-mail</label>
+	</div>
+
+	<div class="form_register">
+    {{ form.subject.errors }}
+    {{form.email}}
+	</div>
+
+	<div>
+	<label for="id_username">Пароль</label>
+	</div>
+
+	<div class="form_register">
+    {{ form.subject.errors }}
+     {{form.password1}}
+	</div>
+
+	<div>
+	<label for="id_username">Пароль уще раз</label>
+	</div>
+
+	<div class="form_register">
+    {{ form.subject.errors }}
+     {{form.password2}}
+	</div>
+-->
+	<div class="form_register">
+		<input class="btn btn-success" type="submit" value="Зарегистрироваться" >
+	</div>
 </form>
 
 </div>

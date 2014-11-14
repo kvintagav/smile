@@ -11,4 +11,19 @@
     display: inline-block;
 
 }
+.f_input{
+	padding: 10px;
+}
+.form_register{
+	padding: 10px ;
+}
 
+.some-class{
+	padding: 10px;
+}
+
+.about{
+	width: 500px;
+	height: 100px
+
+}
