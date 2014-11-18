@@ -34,6 +34,14 @@ class Photographer(AbstractBaseUser):
 	is_active = models.BooleanField(default=True)
 
 	is_admin = models.BooleanField(default=False)
+
+	sity = models.CharField(_(u'first_name'), max_length= 30, unique= False)
+
+	max_sale = models.IntegerField(default=3)
+	max_action = models.IntegerField(default=3)
+	max_style = models.IntegerField(default=3)
+
+
 	#type_accaunt = models.CharField(_(u'type_accaunt'),max_length = 30)
 
 	#mounts_foto = models.IntegerField(_(u'mount_foto'))
@@ -65,3 +73,26 @@ class Photographer(AbstractBaseUser):
 	@property
 	def is_staff(self):
 		return self.is_admin
+
+
+class Style(models.Model)
+
+	FAMILY = 'FM'
+    PORTRAIT = 'PO'
+    ALL_STYLE_CHOICES = (
+        (FAMILY, 'Семья'),
+        (PORTRAIT, 'Портрет'),
+       
+    )
+	style_work = models.CharField(max_length=30,choices=ALL_STYLE_CHOICES,default=PO)
+	photographer = models.ForeignKey(Photographer)
+
+
+class Action(models.Model)
+	photographer = models.ForeignKey(Photographer)
+
+class Sale(models.Model)
+	photographer = models.ForeignKey(Photographer)
+
+class Location(models.Model)
+

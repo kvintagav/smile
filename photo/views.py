@@ -62,3 +62,19 @@ def registration(request):
 			args['form'] = newuser_form
 
 	return render_to_response('registration.html',args)		
+
+
+def search(request):
+	args = {}
+	args.update(csrf(request))
+	#args['form']=PhotographerSearchForm()
+	"""if request.POST:
+		
+		if :
+			
+			return redirect('/')
+		else:
+			args['form'] = newuser_form
+		"""
+			
+	return render(request,'search.html',args)

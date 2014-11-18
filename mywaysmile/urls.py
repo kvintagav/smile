@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from photo.views import registration , login , logout , office
+from photo.views import registration , login , logout , office , search
 
 urlpatterns = patterns('',
     # Examples:
@@ -13,7 +13,7 @@ urlpatterns = patterns('',
     url(r'^login/',login,name="login"),
     url(r'^logout/',logout,name="logout"),
     url(r'^office/',office,name="office"),
-    
+    url(r'^search/',search,name="search"),  
    # url(r'^office/(?P<user_id>\w+)/$',office,name="office"),
     
  	url(r'^$', include('top.urls',namespace="top")),

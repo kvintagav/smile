@@ -36,7 +36,7 @@ class UserCreationForm(SexyModelForm):
             'invalid': _("This value may contain only letters, numbers and "
                          "@/./+/-/_ characters.")},widget=forms.TextInput(attrs={'placeholder':'Никнейм'}))
 
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder':_(u'E-mail')}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder':_(u'E-mail')}),help_text='A valid email address, please.')
     
     first_name = forms.RegexField(label=_("first_name"), max_length=30,
         regex=r'^[\w.@+-]+$',
@@ -78,5 +78,7 @@ class UserChangeForm(forms.ModelForm):
     def clean_password(self):
         return self.initial["password"]
 
-#class SearchForm(forms.ModelForm):
+#class PhotographerSearchForm(forms.ModelForm):
+
+
 

@@ -10,9 +10,24 @@
 <div>
 <p> Введите  параметры для поиска</p>
 
-<p> Выбрать город</p>
-<p> Выбрать тематику съемки</p>
+<form class="form-inline" role="form " action="{% url 'search' %}" method="post">
+	{%csrf_token%}
+	<!--{{form}}-->
+	{{ form.non_field_errors }}
+	{% for field in form %}
+		<div class="f_row">
+			{{ field.errors }}
+			<div class="f_input">
+				{{ field }}
+				{% if field.help_text %}<div >{{ field.help_text }}</div>{% endif %}
+			</div>
+		</div>
+	{% endfor %}
 
+	<div class="form_seаrch">
+		<input class="btn btn-success" type="submit" value="Найти" >
+	</div>
+</form>
   
 
 </div>

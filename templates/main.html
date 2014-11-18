@@ -35,7 +35,7 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="{% url 'top:index' %}">Главная</a></li>
-            <li><a href="{% url 'top:index' %}">Поиск фотографа</a></li>
+            <li><a href="{% url 'search' %}">Поиск фотографа</a></li>
 
             {% if user.is_authenticated %}
                 <li><a href="{% url 'office'%}">Личный кабинет</a></li> 
