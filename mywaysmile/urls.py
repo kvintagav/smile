@@ -14,8 +14,9 @@ urlpatterns = patterns('',
     url(r'^logout/',logout,name="logout"),
     url(r'^office/',office,name="office"),
     url(r'^search/',search,name="search"),  
+
    # url(r'^office/(?P<user_id>\w+)/$',office,name="office"),
-    
- 	url(r'^$', include('top.urls',namespace="top")),
-    	   
+    url(r'^$', include('top.urls',namespace="top")),
+    url(r'^photo/', include('photo.urls',namespace="photo")),
+
 )

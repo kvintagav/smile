@@ -1,16 +1,17 @@
 {%  extends 'main.html' %}
 {% load staticfiles %}
 
-
 {% block component %}
 
 <div >
-	<h1> Внести изменения в личные данные</h1>
+	<h1> Регистрация </h1>
 </div>
-<div>
 
-
-<form class="form-inline" role="form " action="{% url 'photo:settings' user.id %}" method="post">
+<div >
+	<h4> Если вы фотограф и  хотите найти клиентов, пройдите регистрацию</h4>
+</div>
+<div >
+<form class="form-inline" role="form " action="{% url 'registration' %}" method="post">
 	{%csrf_token%}
 	<!--{{form}}-->
 	{{ form.non_field_errors }}
@@ -25,9 +26,10 @@
 	{% endfor %}
 
 	<div class="form_register">
-		<input class="btn btn-success" type="submit" value="Сохранить изменения" >
+		<input class="btn btn-success" type="submit" value="Зарегистрироваться" >
 	</div>
 </form>
+
 </div>
 
 {% endblock %}

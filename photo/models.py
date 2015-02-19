@@ -22,24 +22,25 @@ class MyUserManager(BaseUserManager):
 		return Photographer
 
 class Photographer(AbstractBaseUser):
+
 	email = models.EmailField(_(u'email'),max_length=255,unique=True)
-	username = models.CharField(_(u'user_name'), max_length= 30, unique= True)
+	#username = models.CharField(_(u'user_name'), max_length= 30, unique= True)
 	#avatar
 	first_name = models.CharField(_(u'first_name'), max_length= 30, unique= False)
 	second_name = models.CharField(_(u'second_name'), max_length= 30, unique= False)
 	about = models.TextField(_(u'about'))
-	date_birth = models.DateTimeField(_(u'date_birth') , blank=True, null=True) 
+	date_birth = models.DateField(_(u'date_birth') , blank=True, null=True) 
 
 	date_pay =  models.DateTimeField(_(u'date_pay'),  blank=True, null=True)
 	is_active = models.BooleanField(default=True)
 
 	is_admin = models.BooleanField(default=False)
 
-	sity = models.CharField(_(u'first_name'), max_length= 30, unique= False)
+	sity = models.CharField(_(u'sity'), max_length= 30, unique= False)
 
-	max_sale = models.IntegerField(default=3)
-	max_action = models.IntegerField(default=3)
-	max_style = models.IntegerField(default=3)
+	max_sale = models.IntegerField(_(u'max_sale'),default=3)
+	max_action = models.IntegerField(_(u'max_action'),default=3)
+	max_style = models.IntegerField(_(u'max_style'),default=3)
 
 
 	#type_accaunt = models.CharField(_(u'type_accaunt'),max_length = 30)
@@ -75,24 +76,28 @@ class Photographer(AbstractBaseUser):
 		return self.is_admin
 
 
-class Style(models.Model)
-
+class Style(models.Model):
 	FAMILY = 'FM'
-    PORTRAIT = 'PO'
-    ALL_STYLE_CHOICES = (
-        (FAMILY, 'Семья'),
-        (PORTRAIT, 'Портрет'),
-       
-    )
-	style_work = models.CharField(max_length=30,choices=ALL_STYLE_CHOICES,default=PO)
+	PORTRAIT = 'PO'
+	ALL_STYLE_CHOICES = (
+		(FAMILY, 'Семья'),
+		(PORTRAIT, 'Портрет'),
+
+	)
+	style_work = models.CharField(max_length=30,choices=ALL_STYLE_CHOICES,default=PORTRAIT)
 	photographer = models.ForeignKey(Photographer)
 
 
-class Action(models.Model)
+class Action(models.Model):
+	text = models.TextField(_(u'text'))
+	date_end =  models.DateTimeField(_(u'date_end'))
+
 	photographer = models.ForeignKey(Photographer)
 
-class Sale(models.Model)
+class Sale(models.Model):
+	mount= models.IntegerField(default=0)
+	text = models.TextField(_(u'text'))
 	photographer = models.ForeignKey(Photographer)
 
-class Location(models.Model)
+#class Location(models.Model)
 

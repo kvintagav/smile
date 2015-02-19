@@ -1,8 +1,8 @@
 from django.utils.translation import ugettext as _
 from django.shortcuts import render_to_response,render , get_object_or_404 , redirect
-from photo.models import Photographer
+from photo.models import Photographer , Style
 from django.utils import timezone
-from photo.forms import UserCreationForm
+from photo.forms import UserCreationForm , UserChangeForm 
 from django.core.context_processors import csrf 
 from django.contrib import auth
 from django.template import RequestContext
@@ -31,11 +31,23 @@ def logout(request):
 
 
 
-def settings(request):
-	args = {}
+def settings(request,user_id):
+	args={}
 	args.update(csrf(request))
+	user = Photographer.object.get(id=user_id)
+	args['form']=UserChangeForm(instance = user)
+	if request.POST:
+		olduser_form = UserChangeForm(request.POST, instance = user)
+		if olduser_form.is_valid():
+			olduser_form.save()
+			return redirect('/office/')
+		else:
+			args['form'] = olduser_form
+
 
 	return render(request,'settings.html',args)
+
+
 
 def personal(request,user_id):
 	args = {}
@@ -56,7 +68,7 @@ def registration(request):
 	if request.POST:
 		newuser_form = UserCreationForm(request.POST)
 		if newuser_form.is_valid():
-			newuser_form.save()
+			newuser_form.__init__()
 			return redirect('/')
 		else:
 			args['form'] = newuser_form

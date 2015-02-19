@@ -1,4 +1,4 @@
-from photo.models import Photographer
+from photo.models import Photographer , Style
 from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin
@@ -14,7 +14,7 @@ class UserAdmin(UserAdmin):
     list_filter = ('is_admin',) 
     fieldsets = (
         (None, {'fields': ('email', 'username', 'password')}),
-        ('Personal info', {'fields': ('date_birth', 'first_name', 'second_name')}),
+        ('Personal info', {'fields': ('date_birth', 'first_name', 'second_name','sity')}),
         ('Permissions', {'fields': ('is_admin',)}),
         ('Important dates', {'fields': ('last_login',)}),
     )
